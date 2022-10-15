@@ -13,6 +13,71 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+// ROUTE VIEW
 Route::get('/', function () {
     return view('welcome');
 });
+
+// BASIC ROUTE VIEW
+Route::get('/about', function () {
+    return 'whatever';
+});
+
+// ROUTE VIEW
+// Route::get('/contact', function () {
+//     return view('contact');
+// });
+
+// ROUTE VIEW + ARGUMEN
+Route::get('/contact', function () {
+    return view('contact', [
+        'name' => 'iman', 
+        'phone' => '0812'
+    ]);
+});
+
+// SHORT ROUTE VIEW
+// Route::view('/contact', 'contact');
+
+// SHORT ROUTE VIEW + ARGUMEN
+// Route::view('/contact', 'contact', [
+//         'name' => 'iman', 
+//         'phone' => '0812'
+//     ]);
+
+// REDIRECT ROUTE
+Route::redirect('/contact', '/contact-us');
+
+// ROUTE PARAMETER
+Route::get('/product', function () {
+    return 'produk';
+});
+
+// Route::get('/product/{id}', function ($id) {
+//     return 'ini adalah product dengan id '.$id;
+// });
+
+// ROUTE PARAMETER + VIEW ROUTE
+Route::get('/product/{id}', function ($id) {
+    return view('product.detail', [
+            'id' => $id
+    ]);
+});
+
+// ROUTE PREFIXES
+Route::prefix('administrator')->group(function () {
+    Route::get('/profile-admin', function() {
+        return 'profile-admin';
+    });
+    
+    Route::get('/about-admin', function() {
+        return 'about-admin';
+    });
+    
+    Route::get('/contact-admin', function() {
+        return 'contact-admin';
+    });
+});
+
+// MENGECEK LIST ROUTE
+// php artisan route:list
