@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\StudentController;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,9 +23,13 @@ Route::get('/', function () {
     ]);
 });
 
-Route::get('/about', function () {
-    return view('about');
-});
+// Route::get('/about', function () {
+//     return view('about');
+// });
+
+
+// ROUTE + CONTROLLER
+Route::get('/students', [StudentController::class, 'index']);
 
 // // BASIC ROUTE VIEW
 // Route::get('/about', function () {
